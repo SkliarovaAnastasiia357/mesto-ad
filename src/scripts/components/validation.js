@@ -1,19 +1,19 @@
 function showInputError(formElement, inputElement, errorMessage, settings) {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`); //формируется ошибка, отображ сообщение об ошибке
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settings.errorClass);
-  inputElement.classList.add(settings.inputErrorClass);
+  inputElement.classList.add(settings.inputErrorClass); //добавляет классы
 }
 
 function hideInputError(formElement, inputElement, settings) {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`); //сообщение скрывается
   errorElement.textContent = "";
   errorElement.classList.remove(settings.errorClass);
-  inputElement.classList.remove(settings.inputErrorClass);
+  inputElement.classList.remove(settings.inputErrorClass); //классы удаляютчя
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
-  if (!inputElement.value.trim()) {
+  if (!inputElement.value.trim()) { //проверка на валидность строки после удаления пробелов
     showInputError(
       formElement,
       inputElement,
@@ -27,7 +27,7 @@ function checkInputValidity(formElement, inputElement, settings) {
     inputElement.classList.contains("popup__input_type_name") ||
     inputElement.classList.contains("popup__input_type_card-name")
       ? 2
-      : 2; // граничу худшим значением, по условию непонятно, чего тут лучше поставить
+      : 2; // граничу худшим значением
 
   const maxLength = inputElement.classList.contains("popup__input_type_name")
     ? 40
@@ -35,7 +35,7 @@ function checkInputValidity(formElement, inputElement, settings) {
     ? 30
     : inputElement.classList.contains("popup__input_type_description")
     ? 200
-    : 200;  // граничу худшим значением, по условию непонятно, чего тут лучше поставить
+    : 200;  // граничу худшим значением
 
   if (
     inputElement.value.length < minLength ||
@@ -91,22 +91,22 @@ function checkInputValidity(formElement, inputElement, settings) {
 
 function hasInvalidInput(formElement, settings) {
   const inputElements = formElement.querySelectorAll(settings.inputSelector);
-  return Array.from(inputElements).some((input) => !input.validity.valid); // хотя бы 1 валидный элемент
+  return Array.from(inputElements).some((input) => !input.validity.valid); // true, если хотябы 1 поле не прошло валидацию
 }
 
 function disableSubmitButton(formElement, settings) {
   const submitButton = formElement.querySelector(settings.submitButtonSelector);
   submitButton.disabled = true;
-  submitButton.classList.add(settings.inactiveButtonClass);
+  submitButton.classList.add(settings.inactiveButtonClass); //делает кнопку неактивной
 }
 
 function enableSubmitButton(formElement, settings) {
   const submitButton = formElement.querySelector(settings.submitButtonSelector);
   submitButton.disabled = false;
-  submitButton.classList.remove(settings.inactiveButtonClass);
+  submitButton.classList.remove(settings.inactiveButtonClass); 
 }
 
-function toggleButtonState(formElement, settings) {
+function toggleButtonState(formElement, settings) { //работа кнопки в завис от валид всех полей
   const isInvalid = hasInvalidInput(formElement, settings);
   if (isInvalid) {
     disableSubmitButton(formElement, settings);
@@ -115,7 +115,7 @@ function toggleButtonState(formElement, settings) {
   }
 }
 
-function setEventListeners(formElement, settings) {
+function setEventListeners(formElement, settings) { //обработчик input для всех полей формы, вызов функции для кажд поля
   const inputElements = formElement.querySelectorAll(settings.inputSelector);
 
   inputElements.forEach((input) => {
@@ -126,7 +126,7 @@ function setEventListeners(formElement, settings) {
   });
 }
 
-function clearValidation(formElement, settings) {
+function clearValidation(formElement, settings) { //очистка ошибок, неактив кнопка, исп при открытии формы
   const inputElements = formElement.querySelectorAll(settings.inputSelector);
   inputElements.forEach((input) => {
     hideInputError(formElement, input, settings);
@@ -134,7 +134,7 @@ function clearValidation(formElement, settings) {
   disableSubmitButton(formElement, settings);
 }
 
-function enableValidation(settings) {
+function enableValidation(settings) { //вкл валидации форм, принимает все необх селекторы как объект настроек
   const formElements = document.querySelectorAll(settings.formSelector);
   formElements.forEach((formElement) => {
     formElement.querySelectorAll(settings.inputSelector).forEach((input) => {
@@ -147,3 +147,4 @@ function enableValidation(settings) {
 }
 
 export { enableValidation, clearValidation };
+//последние две функции импортируются в index.js
