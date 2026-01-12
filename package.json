@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "pages -d dist"
+    "deploy": "branch2 -d dist"
   },
   "repository": {
     "type": "git",
