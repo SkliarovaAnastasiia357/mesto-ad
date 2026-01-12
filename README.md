@@ -1,5 +1,5 @@
 https://github.com/SkliarovaAnastasiia357/mesto-ad
-https://SkliarovaAnastasiia357.github.io/mesto-ad/
+[https://SkliarovaAnastasiia357.github.io/mesto-ad/](https://skliarovaanastasiia357.github.io/mesto-ad/)
 Стартовый набор для выполнения проектной работы Место
 
 Для запуска приложения необходимо использовать live-server
