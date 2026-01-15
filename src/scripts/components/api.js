@@ -6,16 +6,19 @@ const config = {
   },
 };
 
+// будет использоваться в конце каждого метода, проверка на корректность ответа
 const getResponseData = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
+// Получение объекта данных пользователя
 export const getUserInfo = () => {
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers,
   }).then(getResponseData);
 };
 
+// Получение json с массивом карточек группы
 export const getCardList = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers,
