@@ -189,6 +189,7 @@ const createUserBadge = (name) => {
   return element;
 };
 
+// Вариант 3: модальное окно со статистикой карт
 const handleOpenStats = () => {
   statsList.innerHTML = "";
   statsUsersList.innerHTML = "";
