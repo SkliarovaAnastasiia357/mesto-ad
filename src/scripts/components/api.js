@@ -6,7 +6,7 @@ const config = {
   },
 };
 
-// будет использоваться в конце каждого метода, проверка на корректность ответа
+//Проверка на корректность ответа
 const getResponseData = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
