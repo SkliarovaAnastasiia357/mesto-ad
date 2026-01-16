@@ -117,6 +117,7 @@ const handleAvatarFromSubmit = (evt) => {
     });
 };
 
+// Нешаблонное добавление карточки
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
   const submitButton = evt.submitter;
@@ -150,6 +151,7 @@ const handleDeleteClick = (cardElement, cardId) => {
   openModalWindow(deleteConfirmPopup);
 };
 
+// Нешабонное удаление карточки
 deleteConfirmForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const submitButton = evt.submitter;
@@ -166,6 +168,7 @@ deleteConfirmForm.addEventListener("submit", (evt) => {
     });
 });
 
+// Обработка лайкоса
 const handleLikeClick = (likeButton, cardId, likeCounter) => {
   const isLiked = likeButton.classList.contains("card__like-button_is-active");
 
@@ -176,6 +179,7 @@ const handleLikeClick = (likeButton, cardId, likeCounter) => {
     .catch(console.log);
 };
 
+// Создание элемента списка статистики
 const createDefinitionItem = (term, description) => {
   const element = statsDefinitionTemplate.content.cloneNode(true);
   element.querySelector(".popup__info-term").textContent = term;
@@ -183,6 +187,7 @@ const createDefinitionItem = (term, description) => {
   return element;
 };
 
+// Создание элемента списка пользователей
 const createUserBadge = (name) => {
   const element = statsUserTemplate.content.cloneNode(true);
   element.querySelector(".popup__list-item").textContent = name;
